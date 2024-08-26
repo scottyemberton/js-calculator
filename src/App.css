@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Unica:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Spinnaker&display=swap');
+
+/* ============================ */
+/* C O L O R  U T I L I T I E S */
+/* ============================ */
+
+:root {
+  --light-white: hsl(0, 0%, 99%);
+  --dark-white: hsl(0, 0%, 88%);
+  --light-gray: hsl(0, 0%, 86%);
+  --dark-gray: hsl(0, 0%, 70%);
+  --darker-gray: hsl(0, 0%, 60%);
+  --light-blue: hsl(200, 80%, 60%);
+  --dark-blue: hsl(210, 70%, 40%);
+  --green: hsl(150, 30%, 60%);
+  --black: hsl(0, 0%, 10%);
+  
+  --ff-display: 'Unica', sans-serif;
+  --ff-header: 'Raleway', sans-serif;
+  --ff-button: 'Orbitron', sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  background: linear-gradient(to bottom right, #b9d6d3, #a4e1a1);
+}
+
+/* ======================== */
+/* G E N E R A L  R E S E T */
+/* ======================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* ============================ */
+/* G E N E R A L  S T Y L I N G */
+/* ============================ */
+
+h1 {
+  font-family: var(--ff-header);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--dark-blue);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+#calculator {
+  display: grid;
+  grid-template-areas: 
+    "display display display display"
+    "clear negative percentage divide"
+    "seven eight nine multiply"
+    "four five six subtract"
+    "one two three add"
+    "zero double-zero decimal equals";
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--light-blue);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: relative;
+  border: 8px solid transparent;
+  border-bottom: 16px solid var(--dark-blue);
+  border-right: 16px solid var(--dark-blue);
+  box-shadow: 
+    0 0 0 2px var(--dark-blue),
+    0 0 0 2px var(--dark-blue) inset;
+}
+
+#display {
+  position: relative;
+  grid-area: display;
+  background-color: var(--green);
+  color: var(--dark-blue);
+  font-family: var(--ff-display);
+  border: none;
+  border-radius: 8px;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: right;
+  height: 4.5rem;
+  overflow: hidden;
+}
+
+#expression,
+#answer {
+  font-size: 2rem;
+  margin: 0;
+  line-height: 1.2;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-align: right;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* ==================== */
+/* M E D I A  Q U E R Y */
+/* ==================== */
+
+@media (max-width: 350px) {
+  #calculator {
+    transform: scale(0.95);
+    transform-origin: top left;
+    width: 95%;
+  }
+  
+  #expression,
+  #answer {
+    font-size: 1.9rem;
+  }
+}
+
+/* ============= */
+/* B U T T O N S */
+/* ============= */
+
+#calculator button {
+  margin: 0 auto;
+  font-family: var(--ff-button);
+}
+
+button {
+  height: 3.5rem;
+  width: 3.5rem;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button.number {
+  background-color: var(--light-white);
+  color: var(--dark-blue);
+}
+
+button.symbol,
+button.color {
+  background-color: var(--dark-gray);
+  color: var(--light-white);
+}
+
+button.action {
+  background-color: var(--dark-blue);
+  color: var(--light-white);
+}
+
+/* ================== */
+/* G R I D  A R E A S */
+/* ================== */
+
+#clear {
+  grid-area: clear;
+}
+
+#negative {
+  grid-area: negative;
+}
+
+#percentage {
+  grid-area: percentage;
+}
+
+#divide {
+  grid-area: divide;
+}
+
+#seven {
+  grid-area: seven;
+}
+
+#eight {
+  grid-area: eight;
+}
+
+#nine {
+  grid-area: nine;
+}
+
+#multiply {
+  grid-area: multiply;
+}
+
+#four {
+  grid-area: four;
+}
+
+#five {
+  grid-area: five;
+}
+
+#six {
+  grid-area: six;
+}
+
+#subtract {
+  grid-area: subtract;
+}
+
+#one {
+  grid-area: one;
+}
+
+#two {
+  grid-area: two;
+}
+
+#three {
+  grid-area: three;
+}
+
+#add {
+  grid-area: add;
+}
+
+#zero {
+  grid-area: zero;
+}
+
+#double-zero {
+  grid-area: double-zero;
+}
+
+#decimal {
+  grid-area: decimal;
+}
+
+#equals {
+  grid-area: equals;
+}
